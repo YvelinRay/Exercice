@@ -13,7 +13,10 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 $user = filter_input(INPUT_POST, 'identifiant', FILTER_SANITIZE_STRING);
-$password = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_STRING);
+$mdp = filter_input(INPUT_POST, 'mdp', FILTER_SANITIZE_STRING);
+
+$_SESSION["user"] = $user;
+$_SESSION["mdp"] = $mdp;
 ?>
 <html>
     <head>
@@ -26,12 +29,11 @@ $password = filter_input(INPUT_POST, 'pwd', FILTER_SANITIZE_STRING);
             <fieldset>
                 <legend>Connexion</legend>
                 <label for=\"identifiant\">Identifiant : </label><input type=\"text\" name=\"uid\"/><br>
-                <label for=\"pwd\">Mot de passe : </label><input type=\"password\" name=\"pwd\"/><br>
+                <label for=\"mdp\">Mot de passe : </label><input type=\"password\" name=\"mdp\"/><br>
               <input type=\"submit\" name=\"btnsubmit\" value=\"Valider\" />
             </fieldset>
           </form>";
         ?>
-        
-        <p><a href="http://www.franceinfo.fr/player/resource/640641-1374817"></a></p>
+        <p><a href="login.php">Pas encore inscrit?</a></p>
     </body>
 </html>

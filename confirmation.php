@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <?php
-$nom = "Ray";
-$prenom = "Yvelin";
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 ?>
 <html>
     <head>
@@ -10,7 +12,12 @@ $prenom = "Yvelin";
     </head>
     <body>
         <?php
-        echo "Bonjour ".$prenom." ".$nom.", vous êtes connectés ";
+        if($_SESSION["user"] == $_SESSION["uid"] || $_SESSION["mdp"] == $_SESSION["umdp"]){
+            echo "Bonjour ".$_SESSION["uprenom"]." ".$_SESSION["unom"].", vous êtes connectés ";
+        }
+        else{
+        header("Location:index.php");
+        }
         ?>
     </body>
 </html>
